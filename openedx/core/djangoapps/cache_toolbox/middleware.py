@@ -88,7 +88,7 @@ from django.contrib.auth.models import AnonymousUser, User  # lint-amnesty, pyli
 from django.utils.crypto import constant_time_compare
 from django.utils.deprecation import MiddlewareMixin
 
-from openedx.core.djangoapps.safe_sessions.middleware import SafeSessionMiddleware
+from openedx.core.djangoapps.safe_sessions.middleware import SafeSessionMiddleware, _mark_cookie_for_deletion
 
 from .model import cache_model
 
@@ -138,3 +138,4 @@ class CacheBackedAuthenticationMiddleware(AuthenticationMiddleware, MiddlewareMi
                 # change. Log the user out.
                 request.session.flush()
                 request.user = AnonymousUser()
+                _mark_cookie_for_deletion(request)
