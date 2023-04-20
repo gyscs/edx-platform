@@ -2,15 +2,77 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%inherit file="../main.html" />
 
-<%block name="pagetitle">${_("Blog")}</%block>
+<%block name="pagetitle">${_("Chatbot")}</%block>
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="container about">
         <h1>
-            <%block name="pageheader">${page_header or _("Blog")}</%block>
+            <%block name="pageheader">${page_header or _("Chatbot")}</%block>
         </h1>
         <p>
-            <%block name="pagecontent">${page_content or _("This page left intentionally blank. Feel free to add your own content.")}</%block>
+            <%block name="pagecontent">${page_content or _("BoeingLearning Chatbot.")}</%block>
         </p>
     </section>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+
+    <link rel="stylesheet" href="{%  static 'css/chatbot/chat.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/chatbot/home.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/chatbot/typing.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- CHAT BAR BLOCK -->
+ 
+        <div class="chatbot-container">
+            <div class="chat-bar-collapsible">
+                <button id="chat-button" type="button" class="collapsible">BoeingLearning Course Support
+                    <i id="chat-icon" class="fa fa-fw fa-comments-o"></i>
+                </button>
+    
+                <div class="content">
+                    <div class="full-chat-block">
+                        <!-- Message Container -->
+                        <div class="outer-container">
+                            <div class="chat-container">
+                                <!-- Messages -->
+                                <div id="chatbox">
+                                    <h5 id="chat-timestamp"></h5>
+                                    <img class="chatbot-image" src="../static/images/friendly-chatbot.png" alt="chatbot image" title="chatbot image">
+                                    <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                                    <!-- a message loading dot animation under construction -->
+    
+                                </div>
+    
+                                <!-- User input box -->
+                                <div class="chat-bar-input-block">
+                                    <div id="userInput">
+                                        <input id="textInput" class="input-box" type="text" name="msg"
+                                            placeholder="Tap 'Enter' to send a message">
+                                        <p></p>
+                                    </div>
+    
+                                    <div class="chat-bar-icons">
+                                        <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                            onclick="sendButton()"></i>
+                                    </div>
+                                </div>
+    
+                                <div id="chat-bar-bottom">
+                                    <p></p>
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{%  static 'js/chatbot/chat.js' %}"></script>
+        <script src="{%  static 'js/chatbot/typing_animation.js' %}"></script>
 </main>
